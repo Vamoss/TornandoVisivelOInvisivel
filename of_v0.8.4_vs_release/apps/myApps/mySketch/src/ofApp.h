@@ -2,11 +2,13 @@
 
 #include "ofMain.h"
 #include "ofxPSBlend.h"
+#include "ofxQTVideoSaver.h"
+#include "ofxUI.h"
 
 class ofApp : public ofBaseApp
 {
 public:
-    
+    ~ofApp();
     void setup();
     void update();
     void draw();
@@ -22,17 +24,39 @@ public:
     void gotMessage(ofMessage msg);
     
 private:
+	void save();
+
+	ofxUISuperCanvas *gui1;
+	void guiEvent(ofxUIEventArgs &e);
     
-    ofxPSBlend psBlend;
-    ofImage base;
-    ofImage target;
-    int blendMode;		
+    int					maxDuration;
+	float				duration;
+
+	ofxPSBlend			psBlend;
+    ofImage				base;
+    ofImage				target;
+    int					blendMode;
+	vector<string>		blendNames;
+	
+	float				mixRate;
+	float				cleanRate;
 		
 	ofVideoGrabber 		vidGrabber;
 	ofPixels		 	videoInverted;
 	ofTexture			videoTexture;
 	int 				camWidth;
 	int 				camHeight;
+	
+    ofxQtVideoSaver     vidSaver;
+	float				waitToStartRecording;
+
+	int					bufferSize;
+	vector<ofPixels>	buffer;
+	int					bufferIndex;
+	int					recordedFrames;
 
 	ofFbo canvas;
+
+	enum modes{WAITING, RECORDING, SAVING, SCREENSAVER};
+	modes mode;
 };

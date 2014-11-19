@@ -1,0 +1,14 @@
+<settings>
+	<window>
+		 <x>100</x>
+		 <y>100</y>
+		 <width>1280</width>
+		 <height>960</height>
+		 <fps>30</fps>
+	</window>
+	<capture>
+		 <width>640</width>
+		 <height>480</height>
+		 <maxDuration>30</maxDuration>
+	</capture>
+</settings> 

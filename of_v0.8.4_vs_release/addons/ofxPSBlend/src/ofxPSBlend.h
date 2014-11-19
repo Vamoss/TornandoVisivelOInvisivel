@@ -668,7 +668,6 @@ public:
         ofPushStyle();
         ofPushMatrix();
         base.begin();
-        ofClear(0);
     }
     
     void end()
